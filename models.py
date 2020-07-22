@@ -1,8 +1,12 @@
 import datetime
 
+from flask.ext.login import UserMixin
+
 from peewee import *
 
+# this is using the sql lite database and it will be a constant
 DATABASE = SqliteDatabase('social.db')
+
 
 class User(Model):
     username = CharField(unique=True)
@@ -10,7 +14,7 @@ class User(Model):
     password = CharField(max_length=100)
     joined_at = DateTimeField(default=datetime.datetime.now)
     is_admin = BooleanField(default=False)
-    
+
     class Meta:
         database = DATABASE
         order_by = ('-joined_at',)
