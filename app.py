@@ -11,10 +11,9 @@ app = Flask(__name__)
 app.secret_key = 'kasjflkjhjhfeuhjhhiuniunfljuhs'
 
 
-# this sets up the manager for our app
 login_manager = LoginManager()
 login_manager.init_app(app)
-# redirects a client to login if they are not logged in
+
 login_manager.login_view = "login"
 
 
