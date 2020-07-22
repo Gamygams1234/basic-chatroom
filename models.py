@@ -23,7 +23,6 @@ class User(UserMixin, Model):
         database = DATABASE
         order_by = ('-joined_at',)
 
-# using an instance to use the cls
     @classmethod
     def create_user(cls, username, email, password, admin=False):
         try:
