@@ -62,14 +62,14 @@ def login():
         try:
             user = models.User.get(models.User.email == form.email.data)
         except models.DoesNotExist:
-            flash("Your email or password does not exist.")
+            flash("Your email or password does not exist.", "error")
         else:
             if check_password_hash(user.password, form.password.data):
                 login_user(user)
                 flash("You have been logged in!", "success")
                 return redirect(url_for('index'))
             else:
-                flash("Your email or password does not exist.")
+                flash("Your email or password does not exist.", "error")
     return render_template('login.html', form=form)
 
 
